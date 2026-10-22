@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+
+class base{
+  public:
+  int a;
+  int get(){
+      return a;
+  }
+    
+};
+class derive:public base {
+    /* copy of class base 
+  
+  public:
+  int a;
+  int get(){
+      return a;
+  }
+    
+    */
+    
+  public:
+  int a;
+  int get_d(){
+      return a+get();
+  }
+    
+};
+int main(){
+    base b;
+    b.a=10;
+    cout<<b.get()<<endl;
+    
+    
+    derive ob;
+    ob.base::a=5;
+    ob.a=1;
+    
+    cout<<ob.get_d()<<endl;
+    cout<<ob.base::a<<endl;
+    
+}

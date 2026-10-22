@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Number{
+  int x,y;
+  
+  public:
+    Number(){
+        x=0;
+        y=0;
+    }
+    Number(int a,int b){
+        x=a;
+        y=b;
+    }
+    void print(){
+        cout<<x<<" "<<y<<endl;
+    }
+    
+  friend  int operator || (Number ob1, Number ob2){
+        return (ob1.x||ob1.y) || (ob2.x || ob2.y);
+    }
+
+};    
+
+
+int main()
+{
+    Number n1(1,2),n2(5,6),n3;
+    
+    if(n1||n2) cout<<"OK"<<endl;
+    
+    else cout<<"Error!"<<endl;
+  
+    return 0;
+}
+

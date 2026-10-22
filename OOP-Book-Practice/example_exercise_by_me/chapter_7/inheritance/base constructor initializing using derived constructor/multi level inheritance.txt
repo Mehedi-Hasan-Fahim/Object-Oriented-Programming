@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+class A{
+    int x;
+    public:
+    A(int n){
+        cout<<"Constructing base class"<<endl;
+        x=n;
+    }
+    ~A(){
+        cout<<"Destructing base class"<<endl;
+    }
+    
+    void show_x(){
+        cout<<x<<endl;
+    }
+};
+
+class B :public A{
+/*   
+    int x;
+    public:
+    A(int n){
+        cout<<"Constructing base class"<<endl;
+        x=n;
+    }
+    ~A(){
+        cout<<"Destructing base class"<<endl;
+    }
+    
+    void show_x(){
+        cout<<x<<endl;
+    }
+    
+         */
+    
+    int y;
+    public:
+    B(int n,int m):A(n){
+        cout<<"Constructing derived class"<<endl;
+        y=m;
+    }
+    ~B(){
+        cout<<"Destructing derived class"<<endl;
+    }
+    void show_y(){
+        cout<<y<<endl;
+    }
+};
+
+int main(){
+    B ob(10,11);
+    ob.show_x();
+    ob.show_y();
+    
+}
+

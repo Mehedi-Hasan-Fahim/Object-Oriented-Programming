@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+
+class truck;
+class car{
+  int passengers,speed;
+  public:
+  car(int p,int s){
+      passengers=p;
+      speed=s;
+  };
+   int sp_greater(car c,truck t);
+};
+class truck{
+  int weight,speed;
+  public:
+  truck(int w,int s){
+      weight=w;
+      speed=s;
+  };
+  friend int car :: sp_greater(car c,truck t);
+};
+int car ::  sp_greater(car c,truck t){
+    return c.speed-t.speed;
+}
+int main(){
+    int t;
+    car c1(6,55),c2(2,120);
+    truck t1(10000,55),t2(20000,72);
+    cout<<"Comparing c1 and t2:";
+    t=c1.sp_greater(c1,t1);
+    if(t<0)cout<<"Truck is faster"<<endl;
+    else if(t==0)cout<<"Car and truck speed is the same"<<endl;
+    else cout<<"Car is faster"<<endl;
+         
+         return 0;
+}

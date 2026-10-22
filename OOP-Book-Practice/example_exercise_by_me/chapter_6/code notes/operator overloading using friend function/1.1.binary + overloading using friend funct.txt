@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class Number{
+  int x,y;
+  
+  public:
+    Number(){
+        x=0;
+        y=0;
+    }
+    Number(int a,int b){
+        x=a;
+        y=b;
+    }
+    void print(){
+        cout<<x<<" "<<y<<endl;
+    }
+    
+   friend Number operator+(Number ob1,Number ob2){
+      Number tmp;
+      tmp.x =  ob1.x+ob2.x;
+      tmp.y =  ob1.y+ob2.y;
+      
+      return tmp;
+    }
+
+};    
+
+int main()
+{
+    Number n1(1,2),n2(6,8),n3;
+    
+    n3 = n1+n2;
+
+    n3.print();
+  
+    return 0;
+}

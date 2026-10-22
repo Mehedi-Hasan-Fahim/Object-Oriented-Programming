@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+class three_d{
+int x, y, z;
+public :
+three_d () {
+    x=0; y=0; z=0; 
+    
+}
+three_d (int i, int j, int k){
+   x = i; 
+   y = j; 
+   z = k;
+}
+
+void get (){
+cout<<x<<" "<<y<<" "<<z<<endl;
+}
+
+three_d operator+(three_d& ob){
+    
+    three_d tmp;
+    
+    tmp.x=x+ob.x;
+    tmp.y=y+ob.y;
+    tmp.z=z+ob.z;
+    
+    return tmp;
+}
+three_d operator-(three_d& ob){
+    
+    three_d tmp;
+    
+    tmp.x=x-ob.x;
+    tmp.y=y-ob.y;
+    tmp.z=z-ob.z;
+    
+    return tmp;
+}
+friend three_d operator++(three_d& ob){
+    
+    ob.x++;
+    ob.y++;
+    ob.z++;
+    
+    return ob;
+}
+friend three_d operator--(three_d& ob){
+    
+    ob.x--;
+    ob.y--;
+    ob.z--;
+    
+    return ob;
+}
+
+};
+
+
+int main()
+{
+    three_d o1(2,4,6),o2(1,2,3),o3;
+    
+    o3 = o1 + o2 ;
+    
+    o3.get();
+    
+   o3 = o1 - o2 ;
+    
+    o3.get();
+    
+    ++o1;
+    o1.get();
+    --o2;
+    o2.get();
+   
+    
+
+    return 0;
+}

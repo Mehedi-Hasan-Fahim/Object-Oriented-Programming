@@ -1,0 +1,47 @@
+#include<iostream>
+//#include<cstdlib>
+#include<cstring>
+using namespace std;
+
+class strtype{
+   char *p;
+   int len;
+   public:
+   strtype();
+   ~strtype();
+    void set(char *ptr);
+    void show();
+    
+};
+
+strtype::strtype(){
+    p=nullptr;
+    len=0;
+}
+strtype::~strtype(){
+    cout<<"Freeing p"<<endl;
+    //free(p);
+    delete[]p;
+}
+void strtype::set(char *ptr){
+    len=strlen(ptr);
+    //p=(char *)malloc(len+1);
+    p=new char[len+1];
+    if(!p){
+        cout<<"Allocation error";
+        exit(1);
+    }
+    strcpy(p,ptr);
+}
+void strtype::show(){
+    cout<<p<<" "<<"length "<<len<<endl;
+}
+
+int main(){
+    strtype ob;
+    ob.set("My name is Mehedi Hasan Fahim.");
+    ob.show();
+    cout<<endl;
+}
+
+

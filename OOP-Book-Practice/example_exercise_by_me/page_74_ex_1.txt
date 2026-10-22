@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+#define size 50
+class stack{
+  int top;
+  char data[size];
+  
+public:
+   stack();
+   void push(char s);
+   void pop();
+   void display();
+};
+stack::stack(){
+    top = -1;
+    cout <<"Constructing a stack \n";
+}
+void stack::push(char s) {
+    
+    if (top == size - 1) {
+        cout << "Stack is full";
+    } else {
+        top++;
+        data[top] = s;
+    }
+}
+
+void stack::pop() {
+    if (top == -1) {
+        cout << "Stack is Empty";
+    } else {
+        cout << "\nPopped item is " << data[top];
+        top--;
+    }
+}
+void stack::display() {
+    if (top == -1) {
+        cout << "Stack is Empty";
+    } else {
+        cout << "\nStack is...\n";
+        for (int i = top; i >= 0; i--) {
+            cout << data[i] << " ";
+        }
+    }
+}
+
+void show_stack(stack o){
+    o.display();
+}
+
+int main(){
+    stack obj;
+    obj.push('a');
+    obj.push('b');
+    obj.push('c');
+    obj.push('d');
+    obj.push('e');
+    show_stack(obj);
+    obj.pop();
+    show_stack(obj);
+    obj.display();
+    
+}

@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+class Person{
+  
+  public:
+   void show(){
+      cout<<"I am a person"<<endl;
+  }
+    
+};
+
+class Student:public Person{
+  
+  /*
+  public:
+  void show(){
+      cout<<"I am a person"<<endl;
+  }
+  */
+  
+  public:
+  void show(){
+      cout<<"I am a student"<<endl;
+  }
+    
+};
+
+int main(){
+    Person ob1;
+    Person *p;
+    p=&ob1;
+    cout<<"Base function using base pointer"<<endl;
+    p->show();
+    
+    Student ob2;
+    cout<<"Derive function using derive object"<<endl;
+    ob2.show();
+    
+    p=&ob2;
+    cout<<"Base function using derive object pointer"<<endl;
+    p->show();
+    
+}

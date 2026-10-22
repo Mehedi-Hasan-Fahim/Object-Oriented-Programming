@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+class Number2; // Forward declaration to make it visible for Number1
+
+class Number1 {
+    int x, y;
+
+public:
+    Number1() {
+        x = 0;
+        y = 0;
+    }
+    Number1(int a, int b) {
+        x = a;
+        y = b;
+    }
+    void print() {
+        cout << x << " " << y << endl;
+    }
+
+
+   
+    operator Number2();
+
+};
+
+
+
+
+class Number2 {
+    int x, y;
+
+public:
+    Number2() {
+        x = 0;
+        y = 0;
+    }
+    Number2(int a, int b) {
+        x = a;
+        y = b;
+    }
+    void print() {
+        cout << x << " " << y << endl;
+    }
+  
+   operator Number1();
+    
+};
+
+
+Number1::operator Number2() {
+    Number2 tmp(x, y);
+    return tmp;
+}
+
+Number2::operator Number1() {
+    Number1 tmp(x, y);
+    return tmp;
+}
+
+
+
+int main() {
+    Number1 a(4, 6);
+    Number2 b(7, 6);
+    b = a;
+
+    b.print();
+    
+    a = b;
+
+    a.print(); 
+
+    return 0;
+}
