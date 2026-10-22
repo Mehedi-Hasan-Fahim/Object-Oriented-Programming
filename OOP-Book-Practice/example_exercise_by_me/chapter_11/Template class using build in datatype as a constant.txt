@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+template<class T1,class T2,int size>
+class abc{
+  T1 x[size];
+  T2 y;
+  public:
+  abc(T2 a){
+      y=a;
+  }
+  void print(){
+      cout<<y<<" "<<sizeof(x)<<endl;
+  
+  }  
+};
+
+int main(){
+   abc<char,string,7> ob1("char");
+    ob1.print();
+    
+   abc<int,string,7> ob2("int");
+   ob2.print();
+   
+   abc<double,string,7> ob3("double");
+   ob3.print();
+   
+   abc<string,string,7> ob4("string");
+   ob4.print();
+   
+  
+    
+}

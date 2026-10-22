@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+
+class A {
+    int x;
+public:
+    A(int n) {
+        cout << "Constructing base class A" << endl;
+        x = n;
+    }
+    ~A() {
+        cout << "Destructing base class A" << endl;
+    }
+
+    void show_x() {
+        cout << "x from A: " << x << endl;
+    }
+};
+
+class B : public A {
+    int y;
+public:
+    B(int n, int m) : A(n) {
+        cout << "Constructing derived class B" << endl;
+        y = m;
+    }
+    ~B() {
+        cout << "Destructing derived class B" << endl;
+    }
+
+    void show_y() {
+        cout << "y from B: " << y << endl;
+    }
+};
+
+class C {
+    int z;
+public:
+    C(int p) {
+        cout << "Constructing base class C" << endl;
+        z = p;
+    }
+    ~C() {
+        cout << "Destructing base class C" << endl;
+    }
+
+    void show_z() {
+        cout << "z from C: " << z << endl;
+    }
+};
+
+class D : public B, private C {
+    int w;
+public:
+    D(int n, int m, int p, int q) : B(n, m), C(p) {
+        cout << "Constructing derived class D" << endl;
+        w = q;
+    }
+    ~D() {
+        cout << "Destructing derived class D" << endl;
+    }
+
+    void show_w() {
+        cout << "w from D: " << w << endl;
+    }
+};
+
+int main() {
+    D objD(10, 20, 30, 40);
+
+    objD.show_x(); // Accessing A's member function
+    objD.show_y(); // Accessing B's member function
+    // objD.show_z(); // Compilation error: private inheritance
+    objD.show_w(); // Accessing D's member function
+
+    return 0;
+}

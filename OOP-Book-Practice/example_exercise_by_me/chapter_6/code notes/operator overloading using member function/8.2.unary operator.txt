@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class Number{
+  int x,y;
+  
+  public:
+    Number(){
+        x=0;
+        y=0;
+    }
+    Number(int a,int b){
+        x=a;
+        y=b;
+    }
+    void print(){
+        cout<<x<<" "<<y<<endl;
+    }
+    
+  Number operator ++ (){
+      ++x;
+      ++y;
+      
+      return *this; 
+     /* 
+      Number tmp;
+      tmp.x=++x;
+      tmp.y=++y;
+      
+      return tmp; */
+      
+      
+   }
+   
+   Number operator++(int a){
+       
+    Number temp= *this;  // Create a copy of the original value
+    x++;
+    y++;
+  
+    return temp;  // Return the original value before the increment
+}
+   
+  
+
+  
+};    
+
+int main()
+{
+    Number n1,n2(5,6),n3;
+    n3=++n2;
+    n3.print();
+    n3=n2++;
+    n3.print();
+    n2.print();
+    
+    
+  
+    return 0;
+}

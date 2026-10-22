@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+class Number{
+  int x,y;
+  
+  public:
+    Number(){
+        x=0;
+        y=0;
+    }
+    Number(int a,int b){
+        x=a;
+        y=b;
+    }
+    void print(){
+        cout<<x<<" "<<y<<endl;
+    }
+    
+    Number operator=(Number ob){
+        x=ob.x;
+        y=ob.y;     
+        return *this;       
+    }
+         
+};    
+
+int main()
+{
+    Number n1,n2(5,6),n3;
+    
+    n3=n1=n2;
+    
+    n1.print();
+    n2.print();
+    n3.print();
+
+/*  
+  In this context, this refers to the current object that is being assigned the value. In the assignment expression n3=n1=n2;, 
+the assignment operator is being used to copy the value of n2 into n1, and then the value of n1 into n3.
+
+Here's how the assignments are executed step by step:
+
+n2 is copied into n1 using the assignment operator. In this step, this refers to n1, and the values of n2 are copied to n1.
+
+Next, n1 is copied into n3 using the assignment operator. In this step, this refers to n3, and the values of n1 are copied to n3.
+
+So, in the context of each assignment operation, this points to the object that is on the left side of the assignment operator.
+ In this way, this is used to access and modify the members of the respective objects being assigned to. 
+        */
+
+
+
+    return 0;
+}

@@ -1,0 +1,74 @@
+#include<iostream>
+using namespace std;
+
+class stack{
+  char *stk;
+  int top;
+  int size;
+  public:
+  stack(int s);
+  ~stack();
+  void push(char ch);
+  void pop();
+  void display();
+};
+
+stack::stack(int s){
+    top=-1;
+    stk=nullptr;
+    stk=(char *)malloc(s);
+    if(!stk){
+        cout<<"Allocation error";
+        exit(1);
+    }
+    size=s;
+}
+stack::~stack(){
+    cout<<"Stack is destroyed";
+    free(stk);
+}
+void stack::push(char ch){
+        if(top==size-1){
+            cout<<"Stack is full"<<endl;
+        }else{
+            top++;
+            stk[top]=ch;
+        }
+}
+
+void stack::pop(){
+        if(top==-1){
+            cout<<"Stack is empty"<<endl;
+        }else{
+            cout<<"Popped item is "<<stk[top];
+            top--;
+        }
+}
+
+void stack::display(){
+      if(top==-1){
+          cout<<"Stack is empty";
+      }else{
+          cout<<"....Stack is..."<<endl;
+            for(int i=top;i>=0;i--){
+            cout<<stk[i]<<endl;
+      }
+}
+}
+
+int main(){
+stack ob(10);
+ob.push ('a');
+ob.push ('b');
+ob.push ('c');
+ob.push ('d');
+ob.push ('e');
+ob.push ('f');
+ob.display();
+ob.pop();
+
+ob.display();
+
+    return 0;
+}
+

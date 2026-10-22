@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class Number1 {
+  
+  
+public:
+    int x, y;
+    Number1() {
+        x = 0;
+        y = 0;
+    }
+    Number1(int a, int b) {
+        x = a;
+        y = b;
+    }
+    void print() {
+        cout << x << " " << y << endl;
+    }
+
+};
+
+class Number2 {
+  
+  
+public:
+    int x, y;
+    Number2() {
+        x = 0;
+        y = 0;
+    }
+    Number2(int a, int b) {
+        x = a;
+        y = b;
+    }
+    void print() {
+        cout << x << " " << y << endl;
+    }
+
+};
+
+// Define the operator+ as a global function for overloading between different classes
+Number1 operator+(const Number1& ob1, const Number2& ob2) {
+    Number1 result;
+    result.x = ob1.x + ob2.x;
+    result.y = ob1.y + ob2.y;
+    return result;
+}
+
+int main() {
+    Number1 n1(1, 2);
+    Number2 n2(5, 6);
+    
+    Number1 n3 = n1 + n2;
+
+    n1.print();
+    n2.print();
+    n3.print();
+  
+    return 0;
+}

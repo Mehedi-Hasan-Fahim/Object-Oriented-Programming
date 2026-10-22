@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+#define size 50
+class queue{
+    int head,tail;
+  char data[size];  
+    public:
+    queue();
+    void enqueue(char s);
+    void dequeue();
+    void show();
+};
+ queue::queue(){
+    head=tail=0;
+}
+void queue::enqueue(char s){
+    if((tail+1) % (size+1)== head)
+    {
+        printf("Queue is full\n;");
+    }
+    else
+    {
+        data[tail] =s;
+        tail =(tail+1)%(size+1);
+    }
+}
+
+void queue::dequeue()
+{
+    if(tail == head)
+    {
+        printf("Queue is empty\n");
+    }
+    else
+    {
+        cout<<"\nDeleted item is :"<<data[head]<<endl;
+        head =(head +1)%(size+1);
+    }
+}
+
+void queue::show()
+{
+    if(tail == head)
+    {
+        printf("Queue is empty\n");
+    }
+    else
+    {
+        int i= head;
+        while(i!=tail)
+        {
+            {
+                printf("%c ",data[i]);
+                i=(i+1)%(size+1);
+            }
+        }
+    }
+}
+
+int main(){
+    queue ob1,ob2;
+    ob1.enqueue('a');
+    ob1.show();
+    ob2=ob1;
+    ob2.show();
+    ob2.dequeue();
+    ob1.show();
+    ob2.show();
+    
+    
+}

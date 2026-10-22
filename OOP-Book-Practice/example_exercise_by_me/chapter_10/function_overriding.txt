@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+class Person{
+  
+  public:
+  void show(){
+      cout<<"I am a person"<<endl;
+  }
+    
+};
+
+class Student:public Person{
+  
+  /*
+  public:
+  void show(){
+      cout<<"I am a person"<<endl;
+  }
+  */
+  
+  public:
+  void show(){
+      cout<<"I am a student"<<endl;
+  }
+    
+};
+
+int main(){
+    Person ob1;
+    Student ob2;
+    ob1.show();
+    ob2.show();
+}
