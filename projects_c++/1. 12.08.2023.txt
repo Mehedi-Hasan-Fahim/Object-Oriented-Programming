@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+void round1(double* numPtr ){
+   double frac ;
+   double val;
+   double* num ;
+   num = numPtr;
+   double* valPtr =&val;
+   frac =modf(*num,valPtr);
+   if( frac < 0.5)
+   *num =* valPtr ;
+   else
+   *num =* valPtr +1.0;
+}
+
+
+
+
+int main (){
+    double i = 100.4;
+    cout << i << " rounded is ";
+    round1(&i);
+    cout << i << "\n";
+    i = 10.9;
+    cout << i << " rounded is ";
+    round1(&i);
+    cout << i << "\n";
+    return 0;
+}

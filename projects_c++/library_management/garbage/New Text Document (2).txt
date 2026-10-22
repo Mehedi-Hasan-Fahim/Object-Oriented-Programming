@@ -1,0 +1,109 @@
+#include <iostream>
+#include <fstream> // Include the fstream library
+#include <limits> // Include the limits library
+using namespace std;
+
+#define Size 50
+
+class card {
+    struct Book {
+        string title, author;
+        int number_copies;
+    };
+
+    Book catalog[Size];
+    int total = 0;
+
+public:
+    void store();
+    void show();
+    void saveToFile(const string& filename);
+    void readFromFile(const string& filename);
+};
+
+void card::store() {
+    cout << "Enter the book's title: ";
+    getline(cin, catalog[total].title);
+    cout << "Author Name: ";
+    getline(cin, catalog[total].author);
+    cout << "Enter Number of Copies: ";
+    cin >> catalog[total].number_copies;
+    cin.ignore();
+    total++;
+}
+
+void card::show() {
+    for (int i = 0; i < total; i++) {
+        cout << "Book's Title: " << catalog[i].title << endl;
+        cout << "Author: " << catalog[i].author << endl;
+        cout << "Number of Copies: " << catalog[i].number_copies << endl;
+        cout << endl;
+    }
+}
+
+void card::saveToFile(const string& filename) {
+    ofstream file(filename); // Create ofstream object for writing to a file
+
+    if (file.is_open()) {
+        for (int i = 0; i < total; i++) {
+            file << catalog[i].title << endl;
+            file << catalog[i].author << endl;
+            file << catalog[i].number_copies << endl;
+        }
+
+        file.close();
+        cout << "Data saved to file." << endl;
+    } else {
+        cout << "Failed to open the file." << endl;
+    }
+}
+
+void card::readFromFile(const string& filename) {
+    ifstream file(filename); // Create ifstream object for reading from a file
+
+    if (file.is_open()) {
+        total = 0; // Reset the total count
+
+        while (total < Size && getline(file, catalog[total].title) && getline(file, catalog[total].author) && file >> catalog[total].number_copies) {
+            file.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore remaining characters in the line
+            total++;
+        }
+
+        file.close();
+        cout << "Data loaded from file." << endl;
+    } else {
+        cout << "Failed to open the file." << endl;
+    }
+}
+
+int main() {
+    card obj;
+    while (true) {
+        cout << "0. Exit" << endl;
+        cout << "1. Enter Books" << endl;
+        cout << "2. Show Books" << endl;
+        cout << "Choose an option: ";
+        int ch;
+        cin >> ch;
+        cin.ignore();
+
+        switch (ch) {
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                obj.store();
+                break;
+            case 2:
+                obj.show();
+                break;
+            default:
+                cout << "Wrong option!!" << endl;
+                break;
+        }
+
+        obj.saveToFile("book catalog.txt"); // Save data to file after each operation
+    }
+
+    return 0;
+}

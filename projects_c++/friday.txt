@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int numberOfCoins;
+int mem[100][100];
+int fun(int arr[], int start, int target){
+    if(target == 0)return 1;
+    if(target < 0) return 0;
+    if(mem[target][start] != -1)return mem[target][start];
+    int ways = 0;
+    for(int i = start; i < numberOfCoins; i++){
+        int tem = target - arr[i];
+        ways+=fun(arr, i, tem);
+    }
+    mem[target][start] = ways;
+    return mem[target][start];
+}
+int main() {
+    int target;
+    cin >> numberOfCoins >> target;
+    int arr[numberOfCoins];
+
+    for(int i = 0; i <= target; i++){
+        for(int j = 0; j < numberOfCoins; j++)
+            mem[i][j] = -1;
+    }
+
+    for(int i = 0; i < numberOfCoins; i++){
+        cin >> arr[i];
+    }
+    cout << fun(arr, 0, target) << endl;
+    return 0;
+}
+/*
+3 6
+1 2 3
+*/

@@ -1,0 +1,8 @@
+Book's Title:Teach Yourself C
+Author:Herbert Schildt
+Number of Copies:1
+
+Book's Title:Teach Youself C++
+Author:Herbert Schildt
+Number of Copies:1
+

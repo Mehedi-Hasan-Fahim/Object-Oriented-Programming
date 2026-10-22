@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1688410622 source:c:\users\fahim\documents\bank_management_system\main.cpp
+	<iostream>
+	"bank.h"
+
+1688947938 c:\users\fahim\documents\bank_management_system\bank.h
+	"bank.h"
+	<string>
+
+1688433990 source:c:\users\fahim\documents\bank_management_system\bank.cpp
+	"bank.h"
+	<iostream>
+	<chrono>
+	<thread>
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1688669738 source:c:\users\fahim\documents\bank_account\main.cpp
+	<iostream>
+	<string>
+	<iostream>
+	<chrono>
+	<thread>
+
